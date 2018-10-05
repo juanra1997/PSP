@@ -1,8 +1,8 @@
-package caj1;
+package cajeras.caj1;
 
 public class Cajeras extends Thread {
 
-	private cli;
+	private Clientes cli;
 	public Cajeras (String s) {
 	
 	super(s);
@@ -24,7 +24,7 @@ public class Cajeras extends Thread {
 		try{
 			sleep(t);
 		}catch(InterruptedException e){
-			System.err.println("Error: "+e.getMessage);
+			System.err.println("Error: "+e.getMessage());
 		}
 	}
 
