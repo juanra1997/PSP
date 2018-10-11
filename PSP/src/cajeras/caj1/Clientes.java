@@ -1,6 +1,6 @@
-package caj1;
+package cajeras.caj1;
 
-public class Clientes {
+public class Clientes/* extends Thread*/{
 	
 		private String nombreCli;
 		private int[] carritoCli;

@@ -1,4 +1,4 @@
-package caj2;
+package cajeras.caj2;
 
 public class Clientes {
 	

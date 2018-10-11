@@ -21,5 +21,7 @@ public class Principal{
 	public static void procesarCompra(Clientes cli){
 		
 		long ti=System.currentTimeMillis();
+                cli.start();
+                
 	}
 }
