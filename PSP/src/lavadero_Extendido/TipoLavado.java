@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Lavadero;
+package lavadero_Extendido;
 
 /**
  *
  * @author Juanra
  */
-public enum TamannoCoche {
+public enum TipoLavado {
     
-    PEQUENNO, MEDIANO, GRANDE;
+    NORMAL, EXTRA, SUPER;
 }

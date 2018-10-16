@@ -17,7 +17,7 @@ public class Principal {
     public static void main(String[] args){
         
         long tinicio=System.currentTimeMillis();
-        Coche coche1=new Coche(TamannoCoche.PEQUEÑO, TipoLavado.EXTRA);//12
+        Coche coche1=new Coche(TamannoCoche.PEQUENNO, TipoLavado.EXTRA);//12
         Coche coche2=new Coche(TamannoCoche.MEDIANO, TipoLavado.NORMAL);//14
         Coche coche3=new Coche(TamannoCoche.GRANDE, TipoLavado.SUPER);//22
         Coche coche4=new Coche(TamannoCoche.GRANDE, TipoLavado.NORMAL);//18
