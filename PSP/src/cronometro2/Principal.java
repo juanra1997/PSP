@@ -33,7 +33,6 @@ class Ventana extends JFrame implements ActionListener{
     JButton bi, bp;
     JTextField txt;
     Hilo miHilo;
-    boolean comenzado=false;
     
     public Ventana(){
         
@@ -51,6 +50,7 @@ class Ventana extends JFrame implements ActionListener{
         bi.addActionListener(this);
         
         bp=pb.getParar();
+        bp.setEnabled(false);
         bp.addActionListener(this);
         
         miHilo=new Hilo(txt);
@@ -73,18 +73,24 @@ class Ventana extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         if(e.getSource()==bi){
-            if(!comenzado){
-                miHilo.start();
-                comenzado=true;
-            }
+            
+                if(!miHilo.isAlive()){
+                    miHilo.start();
+                }
+                bi.setEnabled(false);
+                bp.setEnabled(true);
+                miHilo.setEsperar(false);
+            
         }
         
         if(e.getSource()==bp){
-            if(!miHilo.isEsperar()){
+            //if(!miHilo.isEsperar()){
                 miHilo.setEsperar(true);
-            }else{
-                miHilo.setEsperar(false);
-            }
+                bi.setEnabled(true);
+                bp.setEnabled(false);
+            //}else{
+                //miHilo.setEsperar(false);
+            //}
         }
     }
 }

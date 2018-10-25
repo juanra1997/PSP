@@ -34,8 +34,13 @@ public class Hilo extends Thread{
         sec=cont.substring(3,5);
 
         while(true){
+
+            dormir(580);
             
-            dormir(1000);
+            while(esperar){
+                //System.out.println(esperar);
+            }
+            
             if(Integer.parseInt(sec)==59){
                 min=String.valueOf(Integer.parseInt(min)+1);
                 sec="00";
@@ -67,8 +72,19 @@ public class Hilo extends Thread{
     
     public void dormir(long t){
         
+        int cont=0;
+        
 	try{
-            sleep(t);
+            System.out.println(!esperar+" "+(cont<t));
+            
+            while(cont<t){
+                while(!esperar&&cont<t){
+                    sleep(1);
+                    cont++;
+                    //System.out.println(cont);
+                }
+                //System.out.println("Holis");
+            }
 	}catch(InterruptedException e){
             System.err.println("Error: "+e.getMessage());
 	}
