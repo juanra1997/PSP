@@ -22,6 +22,9 @@ public class MiServidor1 {
         final int PTO=9000;
         byte[] mensaje;
         DatagramSocket conexion=null;
+        //DatagramPacket dpr=new DatagramPacket(new byte[1024], 1024);
+        //String pet;
+        String respuesta=null;
         
         try{
             
@@ -33,11 +36,21 @@ public class MiServidor1 {
                 DatagramPacket recibido=new DatagramPacket(new byte[1024], 1024);
                 conexion.receive(recibido);
                 System.out.println("Conexion recibida");
-                String respuesta=new String("Hora del servidor: "+new Date());
+                String pet=new String(recibido.getData());
+                pet.trim();
+                //System.out.println(pet);
+                //System.out.println(pet.substring(0, 6).equals("saludo"));
+                if(pet.substring(0, 4).equals("hora")){
+                    respuesta=new String("Hora del servidor: "+new Date());
+                }else if(pet.substring(0, 6).equals("saludo")){
+                    respuesta=new String("Buenos dias cliente");
+                }
+                //String respuesta=new String("Hora del servidor: "+new Date());
                 byte[] respuestab=respuesta.getBytes();
                 DatagramPacket enviado=new DatagramPacket(respuestab, respuestab.length, recibido.getAddress(), recibido.getPort());
                 conexion.send(enviado);
                 System.out.println("Respuesta enviada");
+                System.out.println("\nSERVIDOR ACTIVO");
             }
         } catch(SocketException e){
             

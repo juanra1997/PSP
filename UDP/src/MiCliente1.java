@@ -20,9 +20,12 @@ public class MiCliente1 {
     
     public static void main(String[] args){
         
-        if(args.length<2){
+        byte[] msj=new byte[1024];
+        String env;
+        
+        if(args.length<3){
             
-            System.out.println("Tienes que introducir la direccion IP y el puerto");
+            System.out.println("Tienes que introducir la direccion IP, el puerto y la cadena a enviar (hora o saludo)");
             System.exit(0);
         }
         InetAddress destino=null;
@@ -43,9 +46,25 @@ public class MiCliente1 {
             System.out.println("Puerto incorrecto");
             System.exit(0);
         }
+        if(args[2].equalsIgnoreCase("saludo")){
+            
+            env="saludo";
+            msj=env.getBytes();
+            
+        } else if(args[2].equalsIgnoreCase("hora")){
+            
+            env="hora";
+            msj=env.getBytes();
+            
+        }else {
+            System.out.println("Comando no especificado");
+            System.exit(0);
+        }
+        
+        
         DatagramSocket conexion=null;
         DatagramPacket dp1;
-        byte[] msj=new byte[1024];
+        //byte[] msj=new byte[1024];
         try{
             
             conexion=new DatagramSocket();
